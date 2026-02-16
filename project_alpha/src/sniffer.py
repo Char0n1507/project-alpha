@@ -39,16 +39,24 @@ class PacketSniffer:
                     store=False
                 )
                 logger.info("PCAP processing complete.")
-                # Signal completion if needed, or let the user interrupt
             else:
                 # Live mode
-                # simple filter to avoid too much noise for this demo
-                sniff(
-                    iface=self.interface,
-                    prn=self.callback,
-                    store=False,
-                    stop_filter=lambda x: self.stop_event.is_set()
-                )
+                try:
+                    sniff(
+                        iface=self.interface,
+                        prn=self.callback,
+                        store=False,
+                        stop_filter=lambda x: self.stop_event.is_set()
+                    )
+                except OSError:
+                    # Fallback: Try default interface if specified one fails
+                    logger.warning(f"Interface '{self.interface}' not found. Falling back to default...")
+                    sniff(
+                        iface=None, # Scapy defaults to system default
+                        prn=self.callback,
+                        store=False,
+                        stop_filter=lambda x: self.stop_event.is_set()
+                    )
         except Exception as e:
             logger.error(f"Sniffing failed: {e}")
 
