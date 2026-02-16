@@ -109,6 +109,9 @@ class AnomalyDetector:
         sniffer = PacketSniffer(self.interface, callback=detect_callback, pcap_path=self.pcap_path)
         sniffer.start()
         
+        print(f"\n[+] ARGUS is now watching {self.interface} for anomalies...")
+        print("[+] Press Ctrl+C to stop.\n")
+        
         try:
             while True:
                 time.sleep(1)
