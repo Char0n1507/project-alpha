@@ -29,6 +29,9 @@ echo "[*] Attempting to set capabilities for raw socket access..."
 VENV_PYTHON=$(readlink -f ./venv/bin/python3)
 sudo setcap cap_net_raw=eip "$VENV_PYTHON" 2>/dev/null || echo "⚠️  Could not set capabilities. You may need to run as sudo."
 
+# 5. Make Launcher Executable
+chmod +x run_dashboard.sh
+
 echo ""
 echo "✅ Installation Complete."
 echo "--------------------------------------------------------"
@@ -36,4 +39,5 @@ echo "🚀 TO RUN ARGUS:"
 echo "   1. Activate venv:    source venv/bin/activate"
 echo "   2. Run Training:     sudo ./venv/bin/python3 project_alpha/main.py --train"
 echo "   3. Run Detection:    sudo ./venv/bin/python3 project_alpha/main.py --detect"
+echo "   4. Dashboard:        ./run_dashboard.sh"
 echo "--------------------------------------------------------"
