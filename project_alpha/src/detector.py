@@ -111,7 +111,7 @@ class AnomalyDetector:
             if loss[0] > self.model.threshold:
                 self._alert(packet, loss[0])
             
-            if packet_count % 50 == 0:
+            if packet_count % 10 == 0:
                 print(f"[+] Analyzed {packet_count} packets...", end="\r")
 
         sniffer = PacketSniffer(self.interface, callback=detect_callback, pcap_path=self.pcap_path)

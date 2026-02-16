@@ -24,11 +24,11 @@ def main():
     print("[bold cyan]======================================================[/bold cyan]")
     
     parser = argparse.ArgumentParser(description="Project Alpha: Network Anomaly Detector")
-    parser.add_argument("--train", action="store_true", help="Run in training mode to build baseline.")
-    parser.add_argument("--detect", action="store_true", help="Run in detection mode.")
-    parser.add_argument("--interface", type=str, help="Override network interface from config.")
-    parser.add_argument("--pcap", type=str, help="Path to PCAP file for offline training/detection.")
-    parser.add_argument("--list-interfaces", action="store_true", help="List available network interfaces.")
+    parser.add_argument("--train", action="store_true", help="Start Training Mode to learn normal network behavior.")
+    parser.add_argument("--detect", action="store_true", help="Start Detection Mode to identify anomalies in real-time.")
+    parser.add_argument("--interface", type=str, help="Specify network interface (e.g., eth0, wlan0). Overrides config.yaml.")
+    parser.add_argument("--pcap", type=str, help="Analyze an offline PCAP file instead of live traffic.")
+    parser.add_argument("--list-interfaces", action="store_true", help="Show all available network interfaces on this machine.")
     
     args = parser.parse_args()
 

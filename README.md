@@ -103,18 +103,24 @@ Traditional firewalls use **Signatures** (like a fingerprint database) to stop k
 
 2.  **Run Argus**:
     ```bash
-    # Training
+    # Training (Learns "Normal" behavior)
     sudo ./venv/bin/python3 project_alpha/main.py --train
 
-    # Detection
+    # Detection (Finds Anomalies)
     sudo ./venv/bin/python3 project_alpha/main.py --detect
 
-    # Dashboard
-    sudo ./venv/bin/streamlit run dashboard.py
+    # Dashboard (Visualizes Threats)
+    ./run_dashboard.bat  # Windows
+    # OR
+    sudo ./venv/bin/streamlit run dashboard.py # Linux
 
     # Generate PDF Report
     sudo ./venv/bin/python3 -m project_alpha.src.reporting
     ```
+
+### Troubleshooting
+- **No Packets Detected?**: If you see "Watching..." but no packet counts, try generating traffic (open a web page) or check if you are using the correct interface (use `--list-interfaces`).
+- **Dashboard Empty?**: Run `python3 populate_db.py` to generate sample data if you haven't detected any real anomalies yet.
 
 ## 🛡️ Value in a SOC / Defensive Role
 How does Project Alpha help a Security Operations Center (SOC)?
