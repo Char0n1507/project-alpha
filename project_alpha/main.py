@@ -1,6 +1,12 @@
 import argparse
 import sys
+import os
 import yaml
+# Fix imports when running directly
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
+
 from project_alpha.logging_config import setup_logging
 from project_alpha.src.detector import AnomalyDetector
 from project_alpha.src.cli_rich import print_banner
