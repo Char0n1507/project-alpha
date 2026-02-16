@@ -82,12 +82,12 @@ Traditional firewalls use **Signatures** (like a fingerprint database) to stop k
 
 2.  Run Training:
     ```bash
-    python main.py --interface "Wi-Fi" --train
+    python -m project_alpha.main --interface "Wi-Fi" --train
     ```
 
 3.  Run Detection:
     ```bash
-    python main.py --interface "Wi-Fi" --detect
+    python -m project_alpha.main --interface "Wi-Fi" --detect
     ```
 
 ### Option C: Linux / Kali (Auto-Installer) 🐧
