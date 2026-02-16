@@ -90,6 +90,29 @@ Traditional firewalls use **Signatures** (like a fingerprint database) to stop k
     python main.py --interface "Wi-Fi" --detect
     ```
 
+### Option C: Linux / Kali (Auto-Installer) 🐧
+
+1.  **Clone & Install**:
+    ```bash
+    git clone https://github.com/Start-Of-The-Week/ARGUS.git
+    cd ARGUS
+    chmod +x install.sh
+    ./install.sh
+    ```
+    *(This script installs `libpcap`, creates a python venv, and sets raw socket permissions)*.
+
+2.  **Run Argus**:
+    ```bash
+    # Training
+    sudo ./venv/bin/python3 project_alpha/main.py --train
+
+    # Detection
+    sudo ./venv/bin/python3 project_alpha/main.py --detect
+
+    # Dashboard
+    sudo ./venv/bin/streamlit run dashboard.py
+    ```
+
 ## 🛡️ Value in a SOC / Defensive Role
 How does Project Alpha help a Security Operations Center (SOC)?
 
